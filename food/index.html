@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Deepak | Premium Biryani Experience</title>
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Fuse.js for RAG -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="logo">HOTEL DEEPAK</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><button class="btn-primary">Order Now</button></li>
+        </ul>
+        <div class="mobile-toggle">
+            <i data-lucide="menu"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Experience the Royal <span class="highlight">Biryani</span></h1>
+            <p class="fade-in delay-1">Tradition served on a plate. Taste the legacy of Hotel Deepak.</p>
+            <div class="hero-buttons fade-in delay-2">
+                <button class="btn-primary">View Menu</button>
+                <button class="btn-secondary" onclick="openChat()">Ask Chatbot AI</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <!-- Image will be placed here -->
+            <div class="plate-spinner"></div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <h2 class="section-title">Our <span class="highlight">Signatures</span></h2>
+        
+        <div class="category-filter">
+            <button class="cat-btn active" data-cat="all">All</button>
+            <button class="cat-btn" data-cat="biryani">Biryani</button>
+            <button class="cat-btn" data-cat="starters">Starters</button>
+            <button class="cat-btn" data-cat="desserts">Desserts</button>
+        </div>
+
+        <div class="menu-grid" id="menu-grid">
+            <!-- Menu Items Injected via JS -->
+        </div>
+    </section>
+
+    <!-- Chatbot Widget -->
+    <div class="chat-widget closed" id="chat-widget">
+        <div class="chat-header" onclick="toggleChat()">
+            <div class="chat-title">
+                <i data-lucide="bot"></i> Deepak AI
+            </div>
+            <i data-lucide="chevron-up" id="chat-toggle-icon"></i>
+        </div>
+        <div class="chat-body">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    Hello! I'm your food concierge. Ask me about our "Signature Biryani" or "Spicy Options"!
+                </div>
+            </div>
+            <div class="chat-suggestions" id="chat-suggestions">
+                <button onclick="askQuestion('What is special here?')">What is special here?</button>
+                <button onclick="askQuestion('Do you have veg options?')">Do you have veg options?</button>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask about ingredients, spice...">
+                <button onclick="handleUserQuery()"><i data-lucide="send"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="knowledge_base.js"></script>
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
